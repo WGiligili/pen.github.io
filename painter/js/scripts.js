@@ -1,7 +1,9 @@
-console.log("Start!");
+//console.log("Start!");
 const canvas = document.getElementById('drawingCanvas');
 const context = canvas.getContext('2d');
 const lineWidthRange = document.getElementById('lineWidthRange');
+ // 获取清除按钮元素
+const clearButton = document.getElementById('clearButton');
 
 // 初始化画布大小
 resizeCanvas();
@@ -51,19 +53,20 @@ canvas.addEventListener('touchmove', (e) => {
 
     context.lineTo(e.touches[0].clientX, e.touches[0].clientY);
     context.stroke();
+    
      // 显示压力值文本
-    context.font = '16px Arial';
+    context.font = '62px Arial';
     context.fillStyle = 'black';
-   const text = `Pressure: ${pressure.toFixed(2)}`;
+    const text = `Pressure: ${pressure.toFixed(2)}`;
     const textWidth = context.measureText(text).width;
-    const x = (canvas.width - textWidth) / 2;
-    const y = 0;
+    const x = clearButton.offsetLeft - textWidth - 10; // 调整文本的水平位置
+    const y = clearButton.offsetTop + clearButton.offsetHeight + 10; // 调整文本的垂直位置
 
     context.fillText(text, x, y);
     
     [lastX, lastY] = [e.touches[0].clientX, e.touches[0].clientY];
     
-    draw(e.touches[0].clientX, e.touches[0].clientY);
+    //draw(e.touches[0].clientX, e.touches[0].clientY);
 });
 
 // 结束绘画
@@ -76,6 +79,16 @@ canvas.addEventListener('touchend', () => {
 lineWidthRange.addEventListener('input', () => {
     lineWidth = lineWidthRange.value;
 });
+
+
+clearButton.addEventListener('click', () => {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+
+
+
+/*******************************
 function draw(x, y) {
     context.lineWidth = lineWidth; // 设置线条宽度
     context.lineCap = 'round'; // 设置线条末端为圆形
@@ -87,12 +100,9 @@ function draw(x, y) {
     context.moveTo(x, y);
 }
 
-clearButton.addEventListener('click', () => {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-});
 
+*************************************************
 
-/*
 const canvas = document.getElementById('drawingCanvas');
 const context = canvas.getContext('2d');
 const clearButton = document.getElementById('clearButton');
