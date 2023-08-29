@@ -17,51 +17,72 @@ function resizeCanvas() {
     // 在这里可以重新绘制任何内容，因为画布大小已更改
 
     // 示例：绘制一个矩形以填充整个画布
-    context.fillStyle = 'lightgray';
-    context.fillRect(0, 0, canvas.width, canvas.height);
+    //context.fillStyle = 'lightgray';
+    //context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 //canvas.width = window.innerWidth;
 //canvas.height = window.innerHeight;
 
 let drawing = false;
+let lastX = 0;
+let lastY = 0;
 let lineWidth = lineWidthRange.value;
 
-        // 开始绘画
-        canvas.addEventListener('touchstart', (e) => {
-            drawing = true;
-            draw(e.touches[0].clientX, e.touches[0].clientY);
-        });
+// 开始绘画
+canvas.addEventListener('touchstart', (e) => {
+    drawing = true;
+    [lastX, lastY] = [e.touches[0].clientX, e.touches[0].clientY];
+    context.beginPath();
+    context.moveTo(lastX, lastY);
+    draw(e.touches[0].clientX, e.touches[0].clientY);
+});
 
-        // 绘画中
-        canvas.addEventListener('touchmove', (e) => {
-            if (!drawing) return;
-            draw(e.touches[0].clientX, e.touches[0].clientY);
-        });
+// 绘画中
+canvas.addEventListener('touchmove', (e) => {
+    if (!drawing) return;
+    const pressure = e.touches[0].force || 0.5; // 获取压力值，如果不可用则使用默认值
 
-        // 结束绘画
-        canvas.addEventListener('touchend', () => {
-            drawing = false;
-            context.beginPath();
-        });
+    lineWidth = pressure * 20; // 基于压力值调整线条粗细
+
+    context.lineWidth = lineWidth;
+    context.lineCap = 'round';
+    context.strokeStyle = 'black';
+
+    context.lineTo(e.touches[0].clientX, e.touches[0].clientY);
+    context.stroke();
+
+    [lastX, lastY] = [e.touches[0].clientX, e.touches[0].clientY];
+    
+    draw(e.touches[0].clientX, e.touches[0].clientY);
+});
+
+// 结束绘画
+canvas.addEventListener('touchend', () => {
+    drawing = false;
+    context.beginPath();
+});
+
 // 调整线条粗细
-        lineWidthRange.addEventListener('input', () => {
-            lineWidth = lineWidthRange.value;
-        });
-        function draw(x, y) {
-            context.lineWidth = lineWidth; // 设置线条宽度
-            context.lineCap = 'round'; // 设置线条末端为圆形
-            context.strokeStyle = 'blue'; // 设置线条颜色
+lineWidthRange.addEventListener('input', () => {
+    lineWidth = lineWidthRange.value;
+});
+function draw(x, y) {
+    context.lineWidth = lineWidth; // 设置线条宽度
+    context.lineCap = 'round'; // 设置线条末端为圆形
+    context.strokeStyle = 'blue'; // 设置线条颜色
 
-            context.lineTo(x, y);
-            context.stroke();
-            context.beginPath();
-            context.moveTo(x, y);
-        }
+    context.lineTo(x, y);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(x, y);
+}
 
 clearButton.addEventListener('click', () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
 });
+
+
 /*
 const canvas = document.getElementById('drawingCanvas');
 const context = canvas.getContext('2d');
