@@ -1,11 +1,13 @@
 console.log("Start!");
 const canvas = document.getElementById('drawingCanvas');
 const context = canvas.getContext('2d');
+const lineWidthRange = document.getElementById('lineWidthRange');
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-        let drawing = false;
+let drawing = false;
+let lineWidth = lineWidthRange.value;
 
         // 开始绘画
         canvas.addEventListener('touchstart', (e) => {
@@ -24,17 +26,24 @@ const context = canvas.getContext('2d');
             drawing = false;
             context.beginPath();
         });
-
+// 调整线条粗细
+        lineWidthRange.addEventListener('input', () => {
+            lineWidth = lineWidthRange.value;
+        });
         function draw(x, y) {
-            context.lineWidth = 5; // 设置线条宽度
+            context.lineWidth = lineWidth; // 设置线条宽度
             context.lineCap = 'round'; // 设置线条末端为圆形
-            context.strokeStyle = 'black'; // 设置线条颜色
+            context.strokeStyle = 'blue'; // 设置线条颜色
 
             context.lineTo(x, y);
             context.stroke();
             context.beginPath();
             context.moveTo(x, y);
         }
+
+clearButton.addEventListener('click', () => {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+});
 /*
 const canvas = document.getElementById('drawingCanvas');
 const context = canvas.getContext('2d');
