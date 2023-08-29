@@ -6,22 +6,22 @@ const lineWidthRange = document.getElementById('lineWidthRange');
 const clearButton = document.getElementById('clearButton');
 
 // 初始化画布大小
-//resizeCanvas();
+resizeCanvas();
 
 // 当窗口大小更改时，调整画布大小
-//window.addEventListener('resize', resizeCanvas);
+window.addEventListener('resize', resizeCanvas);
 
-//function resizeCanvas() {
+function resizeCanvas() {
     // 设置画布的宽度和高度与窗口大小一致
-   // canvas.width = window.innerWidth;
-    //canvas.height = window.innerHeight;
+   canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     // 在这里可以重新绘制任何内容，因为画布大小已更改
 
     // 示例：绘制一个矩形以填充整个画布
     //context.fillStyle = 'lightgray';
     //context.fillRect(0, 0, canvas.width, canvas.height);
-//}
+}
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight - 20 ;
 
