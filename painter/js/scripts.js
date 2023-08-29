@@ -46,22 +46,21 @@ canvas.addEventListener('touchmove', (e) => {
     const pressure = e.touches[0].force || 0.5; // 获取压力值，如果不可用则使用默认值
 
     lineWidth = pressure * 20; // 基于压力值调整线条粗细
-
+    lineWidthRange.value = lineWidth;
     context.lineWidth = lineWidth;
     context.lineCap = 'round';
     context.strokeStyle = 'black';
-
     context.lineTo(e.touches[0].clientX, e.touches[0].clientY);
     context.stroke();
     
      // 显示压力值文本
-    context.font = '16px Arial';
+    context.font = '20px Arial';
     context.fillStyle = 'red';
    // const text = `Pressure: ${pressure.toFixed(2)}`;
     const text = `Pressure: `;
     const textWidth = context.measureText(text).width;
-    const x = 100;
-    const y = 200;
+    const x = canvas.width;
+    const y = 0;
 
     context.fillText(text, x, y);
     
