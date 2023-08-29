@@ -35,7 +35,7 @@ canvas.addEventListener('touchstart', (e) => {
     [lastX, lastY] = [e.touches[0].clientX, e.touches[0].clientY];
     context.beginPath();
     context.moveTo(lastX, lastY);
-    draw(e.touches[0].clientX, e.touches[0].clientY);
+    //draw(e.touches[0].clientX, e.touches[0].clientY);
 });
 
 // 绘画中
@@ -51,7 +51,11 @@ canvas.addEventListener('touchmove', (e) => {
 
     context.lineTo(e.touches[0].clientX, e.touches[0].clientY);
     context.stroke();
-
+     // 显示压力值文本
+    context.font = '16px Arial';
+    context.fillStyle = 'black';
+    context.fillText(`Pressure: ${pressure.toFixed(2)}`, 20, 20); // 文本位置
+    
     [lastX, lastY] = [e.touches[0].clientX, e.touches[0].clientY];
     
     draw(e.touches[0].clientX, e.touches[0].clientY);
