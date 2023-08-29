@@ -57,7 +57,8 @@ canvas.addEventListener('touchmove', (e) => {
      // 显示压力值文本
     context.font = '16px Arial';
     context.fillStyle = 'red';
-    const text = `Pressure: ${pressure.toFixed(2)}`;
+   // const text = `Pressure: ${pressure.toFixed(2)}`;
+    const text = `Pressure: `;
     const textWidth = context.measureText(text).width;
     const x = 100;
     const y = 200;
