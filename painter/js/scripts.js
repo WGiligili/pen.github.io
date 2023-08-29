@@ -23,7 +23,7 @@ const clearButton = document.getElementById('clearButton');
     //context.fillRect(0, 0, canvas.width, canvas.height);
 //}
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.height = window.innerHeight - 20 ;
 
 let drawing = false;
 let lastX = 0;
@@ -58,8 +58,8 @@ canvas.addEventListener('touchmove', (e) => {
     const text = `Pressure:'+ pressure.toFixed(2);
     
     const textWidth = context.measureText(text).width;
-    const x = canvas.width;
-    const y = canvas.height;
+    const x = window.innerWidth;
+    const y = window.innerHeight;
 
     context.fillText(text, x, y);
     
