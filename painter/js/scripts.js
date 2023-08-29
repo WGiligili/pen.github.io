@@ -57,7 +57,7 @@ canvas.addEventListener('touchmove', (e) => {
    const text = `Pressure: ${pressure.toFixed(2)}`;
     const textWidth = context.measureText(text).width;
     const x = (canvas.width - textWidth) / 2;
-    const y = canvas.height / 2;
+    const y = 0;
 
     context.fillText(text, x, y);
     
