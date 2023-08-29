@@ -3,7 +3,6 @@
 const canvas = document.getElementById('drawingCanvas');
 const context = canvas.getContext('2d');
 const lineWidthRange = document.getElementById('lineWidthRange');
- // 获取清除按钮元素
 const clearButton = document.getElementById('clearButton');
 
 // 初始化画布大小
@@ -11,7 +10,6 @@ resizeCanvas();
 
 // 当窗口大小更改时，调整画布大小
 window.addEventListener('resize', resizeCanvas);
-
 function resizeCanvas() {
     // 设置画布的宽度和高度与窗口大小一致
    canvas.width = window.innerWidth;
@@ -32,7 +30,7 @@ canvas.addEventListener('touchstart', (e) => {
     [lastX, lastY] = [e.touches[0].clientX, e.touches[0].clientY];
     context.beginPath();
     context.moveTo(lastX, lastY);
-    //draw(e.touches[0].clientX, e.touches[0].clientY);
+    draw(e.touches[0].clientX, e.touches[0].clientY);
 });
 
 // 绘画中
@@ -49,19 +47,17 @@ canvas.addEventListener('touchmove', (e) => {
     context.stroke();
     
      // 显示压力值文本
-    context.font = '20px Arial';
+    context.font = '16px Arial';
     context.fillStyle = 'red';
-    const text = `Pressure:'+ pressure.toFixed(2);
-    
+    const text = `Pressure: ${pressure.toFixed(2)}';    
     const textWidth = context.measureText(text).width;
-    const x = window.innerWidth;
-    const y = window.innerHeight;
-
+    const x = canvas.width;
+    const y = canvas.height;
     context.fillText(text, x, y);
     
     [lastX, lastY] = [e.touches[0].clientX, e.touches[0].clientY];
     
-    //draw(e.touches[0].clientX, e.touches[0].clientY);
+    draw(e.touches[0].clientX, e.touches[0].clientY);
 });
 
 // 结束绘画
@@ -80,10 +76,6 @@ clearButton.addEventListener('click', () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
 });
 
-
-
-
-/*******************************
 function draw(x, y) {
     context.lineWidth = lineWidth; // 设置线条宽度
     context.lineCap = 'round'; // 设置线条末端为圆形
@@ -96,7 +88,7 @@ function draw(x, y) {
 }
 
 
-*************************************************
+/*************************************************
 
 const canvas = document.getElementById('drawingCanvas');
 const context = canvas.getContext('2d');
