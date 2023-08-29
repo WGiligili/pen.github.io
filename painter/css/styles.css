@@ -14,3 +14,12 @@ canvas {
 button {
     margin-top: 10px;
 }
+#controls {
+    position: fixed; /* 使用fixed定位元素，使其固定在视口中 */
+    top: 10px; /* 距离顶部10像素 */
+    left: 50%; /* 居中 */
+    transform: translateX(-50%); /* 水平居中 */
+    background-color: white; /* 设置背景颜色 */
+    padding: 10px; /* 设置内边距，增加可点击区域 */
+    border: 1px solid #ccc; /* 设置边框 */
+}
