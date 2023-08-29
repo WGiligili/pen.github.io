@@ -57,7 +57,7 @@ canvas.addEventListener('touchmove', (e) => {
      // 显示压力值文本
     context.font = '62px Arial';
     context.fillStyle = 'black';
-    const text = `Pressure: ${pressure.toFixed(2)}`;
+    const text = `Pressure:`;
     const textWidth = context.measureText(text).width;
     const x = clearButton.offsetLeft - textWidth - 10; // 调整文本的水平位置
     const y = clearButton.offsetTop + clearButton.offsetHeight + 10; // 调整文本的垂直位置
