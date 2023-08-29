@@ -1,4 +1,5 @@
 //console.log("Start!");
+
 const canvas = document.getElementById('drawingCanvas');
 const context = canvas.getContext('2d');
 const lineWidthRange = document.getElementById('lineWidthRange');
@@ -15,15 +16,10 @@ function resizeCanvas() {
     // 设置画布的宽度和高度与窗口大小一致
    canvas.width = window.innerWidth;
    canvas.height = window.innerHeight;
-
-    // 在这里可以重新绘制任何内容，因为画布大小已更改
-
-    // 示例：绘制一个矩形以填充整个画布
-    //context.fillStyle = 'lightgray';
-    //context.fillRect(0, 0, canvas.width, canvas.height);
 }
+
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight - 20 ;
+canvas.height = window.innerHeight  ;
 
 let drawing = false;
 let lastX = 0;
