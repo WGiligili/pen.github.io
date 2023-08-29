@@ -14,7 +14,7 @@ window.addEventListener('resize', resizeCanvas);
 function resizeCanvas() {
     // 设置画布的宽度和高度与窗口大小一致
    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+   canvas.height = window.innerHeight;
 
     // 在这里可以重新绘制任何内容，因为画布大小已更改
 
