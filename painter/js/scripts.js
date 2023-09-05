@@ -36,7 +36,8 @@ canvas.addEventListener('touchstart', (e) => {
 canvas.addEventListener('touchmove', (e) => {
     if (!drawing) return;
     const pressure = e.touches[0].force || 0.5; // 获取压力值，如果不可用则使用默认值
-
+    Pressed.textContent = e.pressure;
+    
     lineWidth = pressure * 20; // 基于压力值调整线条粗细
     lineWidthRange.value = lineWidth;
     context.lineWidth = lineWidth;
@@ -76,6 +77,7 @@ clearButton.addEventListener('click', () => {
 });
 
 function draw(x, y) {
+    
     context.lineWidth = lineWidth; // 设置线条宽度
     context.lineCap = 'round'; // 设置线条末端为圆形
     context.strokeStyle = 'blue'; // 设置线条颜色
