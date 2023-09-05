@@ -5,9 +5,12 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;/* 设置整个页面不可滚动 */
 }
 
 canvas {
+    top: 100px; /* 距离页面顶部的距离 */
+    left: 100px; /* 距离页面左侧的距离 */
     border: 1px solid #000;
 }
 
