@@ -4,8 +4,11 @@ const clearButton = document.getElementById('clearButton');
 const Pressed =document.getElementById('Pressed');
 const lineWidthRange = document.getElementById('lineWidthRange');
 
-canvas.width = window.innerWidth ;
-canvas.height = window.innerHeight;
+let cutwidth =  window.innerWidth * 0.1 ;
+let cutheight = window.innerWidth * 0.1 ;
+
+canvas.width = window.innerWidth - cutwidth;
+canvas.height = window.innerHeight - cutheight;
 let drawing = false;
 let lastX = 0;
 let lastY = 0;
@@ -18,14 +21,14 @@ let pressValue = Pressed.value;
 window.addEventListener('resize', resizeCanvas);
 function resizeCanvas() {
     // 设置画布的宽度和高度与窗口大小一致
-    canvas.width = window.innerWidth ; 
-    canvas.height = window.innerHeight ;
+    canvas.width = window.innerWidth -cutwidth; 
+    canvas.height = window.innerHeight -cutheight;
 }
 
 // 开始绘画
 canvas.addEventListener('touchstart', (e) => {
     drawing = true;
-    [lastX, lastY] = [e.touches[0].clientX, e.touches[0].clientY];
+    [lastX, lastY] = [e.touches[0].clientX-cutwidth, e.touches[0].clientY-cutheight];
 
     context.beginPath();
     context.moveTo(lastX, lastY);
@@ -80,7 +83,7 @@ canvas.addEventListener('touchmove', (e) => {
     const y = canvas.height;
     context.fillText(text, x, y);
     
-    [lastX, lastY] = [e.touches[0].clientX, e.touches[0].clientY];
+    [lastX, lastY] = [e.touches[0].clientX - cutwidth, e.touches[0].clientY - cutheight];
     
     draw(e.touches[0].clientX, e.touches[0].clientY);   
    
