@@ -9,8 +9,8 @@ body {
 }
 
 canvas {
-    top: 100px;/*  距离页面顶部的距离 */
-     bottom: 10%;/*  距离页面左侧的距离 */
+    top: 10%;/*  距离页面顶部的距离 */
+    bottom: 10%;/*  距离页面左侧的距离 */
     border: 1px solid #000;
     touch-action: none;/*禁用默认触摸行为，以便正常绘画 */
 }
