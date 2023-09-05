@@ -1,9 +1,8 @@
-//console.log("Start!");
-
 const canvas = document.getElementById('drawingCanvas');
 const context = canvas.getContext('2d');
 const lineWidthRange = document.getElementById('lineWidthRange');
 const clearButton = document.getElementById('clearButton');
+const Pressed =document.getElementById('Pressed');
 
 // 初始化画布大小
 resizeCanvas();
