@@ -4,7 +4,7 @@ const clearButton = document.getElementById('clearButton');
 const Pressed =document.getElementById('Pressed');
 const lineWidthRange = document.getElementById('lineWidthRange');
 
-canvas.width = window.innerWidth;
+canvas.width = window.innerWidth - (window.innerWidth * 0.05);
 canvas.height = window.innerHeight-(window.innerHeight * 0.1) ;
 let drawing = false;
 let lastX = 0;
@@ -18,7 +18,7 @@ let pressValue = Pressed.value;
 window.addEventListener('resize', resizeCanvas);
 function resizeCanvas() {
     // 设置画布的宽度和高度与窗口大小一致
-    canvas.width = window.innerWidth; 
+    canvas.width = window.innerWidth - (window.innerWidth * 0.05); 
     canvas.height = window.innerHeight-(window.innerHeight * 0.1) ;
 }
 
