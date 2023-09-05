@@ -28,11 +28,12 @@ function resizeCanvas() {
 // 开始绘画
 canvas.addEventListener('touchstart', (e) => {
     drawing = true;
-    [lastX, lastY] = [e.touches[0].clientX-cutwidth, e.touches[0].clientY-cutheight];
+    [lastX, lastY] = [e.touches[0].clientX+cutwidth, e.touches[0].clientY+cutheight];
 
     context.beginPath();
     context.moveTo(lastX, lastY);
-    draw(e.touches[0].clientX, e.touches[0].clientY);
+    draw( lastX, lastY);
+   // draw(e.touches[0].clientX, e.touches[0].clientY);
 });
 
 function draw(x, y) {
@@ -83,9 +84,9 @@ canvas.addEventListener('touchmove', (e) => {
     const y = canvas.height;
     context.fillText(text, x, y);
     
-    [lastX, lastY] = [e.touches[0].clientX - cutwidth, e.touches[0].clientY - cutheight];
-    
-    draw(e.touches[0].clientX, e.touches[0].clientY);   
+    [lastX, lastY] = [e.touches[0].clientX +cutwidth, e.touches[0].clientY +cutheight];
+    draw( lastX, lastY);
+   // draw(e.touches[0].clientX, e.touches[0].clientY);   
    
 });
  // 显示压力值文本
