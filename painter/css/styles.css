@@ -1,19 +1,34 @@
 body {
-    display: flex;
+    /*  overflow: hidden;设置整个页面不可滚动 */
+    /* display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100vh; */
     margin: 0;
-    /* overflow: hidden;设置整个页面不可滚动 */
+    
+   
 }
-
 canvas {
-    border: 1px solid #000;
+    border: 1px solid #000;/* 可选的边框样式 */
+    
+    /*top: 100px; 距离页面顶部的距离 */
+    /*left: 100px;  距离页面左侧的距离 */    
     touch-action: none;/*禁用默认触摸行为，以便正常绘画 */
 }
 
 button {
-    margin-top: 3px;
+    margin-top: 10px;
+    
 }
 
+/* 
+#controls {
+    position: fixed; /* 使用fixed定位元素，使其固定在视口中 */
+    /* 距离顶部10像素 */
+   /*  left: 50%; 居中 */
+   /* transform: translateX(-50%);  水平居中 */
+    /*  background-color: blue;设置背景颜色 */
+    /*padding: 10px;设置内边距，增加可点击区域 */
+    /* border: 10px solid #ccc; 设置边框 
+}*/
