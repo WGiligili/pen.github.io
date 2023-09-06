@@ -101,9 +101,10 @@ function touchMove(e) {
 // 添加触控笔感压值事件处理
 canvas.addEventListener('pointermove', (e) => {
     if (e.pointerType === 'pen') {
-        Pressed.value = e.pressure;
+        pressValue = e.pressure;
+      
         lineWidth = e.pressure * 20; // 调整线条粗细基于压感值
     }
 });
-
+Pressed.context =  pressValue;
 console.log('pressValue:'+pressValue ,'lineWidth:'+ lineWidth );

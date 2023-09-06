@@ -1,5 +1,5 @@
 body {
-    /*  overflow: hidden;设置整个页面不可滚动 */
+    overflow: hidden;/*  设置整个页面不可滚动 */
     /* display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,9 +11,10 @@ body {
 }
 canvas {
     border: 1px solid #000;/* 可选的边框样式 */
-    
-    /*top: 100px; 距离页面顶部的距离 */
-    /*left: 100px;  距离页面左侧的距离 */    
+    top: 100px;
+    left: 100px;
+    /* 距离页面顶部的距离 */
+    /*  距离页面左侧的距离 */    
     touch-action: none;/*禁用默认触摸行为，以便正常绘画 */
 }
 
