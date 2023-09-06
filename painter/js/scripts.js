@@ -115,7 +115,7 @@ function touchMove(e) {
     //if (!drawing) return;    
 
     const pressure = e.touches[0].force || 0.5; // 使用默认值0.5
-    Pressed.context = pressure;
+    Pressed.textContent = pressure;
     NewlineWide = pressure * 10; // 范围从1到10
     updateBrushSize();
     draw(e.touches[0]);
