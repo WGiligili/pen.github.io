@@ -111,17 +111,24 @@ function touchStart(e) {
 }
 
 function touchMove(e) {
-    if (!drawing) return;    
-    const touch = e.touches[0];
-    context.lineWidth = NewlineWide;
-    context.lineCap = 'round';
-    context.strokeStyle = 'black';
+    e.preventDefault();
+    //if (!drawing) return;    
 
-    context.beginPath();
-    context.moveTo(lastX, lastY);
-    context.lineTo(touch.clientX - canvas.getBoundingClientRect().left, touch.clientY - canvas.getBoundingClientRect().top);
-    context.stroke();
-    [lastX, lastY] = [touch.clientX - canvas.getBoundingClientRect().left, touch.clientY - canvas.getBoundingClientRect().top];
+    const pressure = e.touches[0].force || 0.5; // 使用默认值0.5
+    NewlineWide = pressure * 10; // 范围从1到10
+    updateBrushSize();
+    draw(e.touches[0]);
+
+    // const touch = e.touches[0];
+    // context.lineWidth = NewlineWide;
+    // context.lineCap = 'round';
+    // context.strokeStyle = 'black';
+
+    // context.beginPath();
+    // context.moveTo(lastX, lastY);
+    // context.lineTo(touch.clientX - canvas.getBoundingClientRect().left, touch.clientY - canvas.getBoundingClientRect().top);
+    // context.stroke();
+    // [lastX, lastY] = [touch.clientX - canvas.getBoundingClientRect().left, touch.clientY - canvas.getBoundingClientRect().top];
 }
 
 // 添加触控笔感压值事件处理
